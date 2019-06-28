@@ -1131,110 +1131,143 @@
     <table id="285" parent="2" name="alembic_version"/>
     <table id="286" parent="2" name="blog"/>
     <table id="287" parent="2" name="blog_type"/>
-    <table id="288" parent="2" name="user"/>
-    <column id="289" parent="285" name="version_num">
+    <table id="288" parent="2" name="loginlog"/>
+    <table id="289" parent="2" name="user"/>
+    <column id="290" parent="285" name="version_num">
       <Position>1</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="290" parent="285" name="PRIMARY">
+    <key id="291" parent="285" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>version_num</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="291" parent="286" name="id">
+    <column id="292" parent="286" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="292" parent="286" name="title">
+    <column id="293" parent="286" name="title">
       <Position>2</Position>
       <DataType>varchar(200)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="293" parent="286" name="content">
+    <column id="294" parent="286" name="content">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="294" parent="286" name="imgurl">
+    <column id="295" parent="286" name="imgurl">
       <Position>4</Position>
       <DataType>varchar(250)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="295" parent="286" name="blog_type">
+    <column id="296" parent="286" name="blog_type">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="296" parent="286" name="create_time">
+    <column id="297" parent="286" name="create_time">
       <Position>6</Position>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="297" parent="286" name="blog_type">
+    <index id="298" parent="286" name="blog_type">
       <ColNames>blog_type</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="298" parent="286" name="PRIMARY">
+    <key id="299" parent="286" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="299" parent="286" name="blog_ibfk_1">
+    <foreign-key id="300" parent="286" name="blog_ibfk_1">
       <ColNames>blog_type</ColNames>
       <RefSchemaName>blogdb</RefSchemaName>
       <RefTableName>blog_type</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="300" parent="287" name="id">
+    <column id="301" parent="287" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="301" parent="287" name="typename">
+    <column id="302" parent="287" name="typename">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="302" parent="287" name="PRIMARY">
+    <key id="303" parent="287" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="303" parent="288" name="id">
+    <column id="304" parent="288" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="304" parent="288" name="username">
+    <column id="305" parent="288" name="username">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="305" parent="288" name="password">
+    <column id="306" parent="288" name="remote_ip">
+      <Position>3</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="307" parent="288" name="logintime">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="308" parent="288" name="is_delete">
+      <Position>5</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="309" parent="288" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="310" parent="289" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="311" parent="289" name="username">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="312" parent="289" name="password">
       <Position>3</Position>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="306" parent="288" name="username">
+    <index id="313" parent="289" name="username">
       <ColNames>username</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="307" parent="288" name="PRIMARY">
+    <key id="314" parent="289" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="308" parent="288" name="username">
+    <key id="315" parent="289" name="username">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>username</UnderlyingIndexName>
     </key>

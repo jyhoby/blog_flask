@@ -1,8 +1,7 @@
 from flask import Blueprint, render_template, request, session, url_for, redirect
 from sqlalchemy import desc
-
 from App.models import *
-import re
+
 
 blue = Blueprint('blog', __name__)
 
@@ -70,12 +69,18 @@ def admin_login():
             user = User.query.filter(User.username==username)
             for u in user:
                 if u:
-                    print(u.password,type(u.password))
-                    print(password,type(password))
                     if u.password == password:
                         session['username'] = username #设置session
+                        loginlog = Loginlog()
+                        loginlog.username = username
+                        loginlog.remote_ip = request.remote_addr
+                        try:
+                            db.session.add(loginlog)
+                            db.session.commit()
+                        except:
+                            db.session.rollback()
+                            db.session.flush()
                         return redirect(url_for("blog.admin_index"))
-
         return render_template('admin/login.html')
 
     return redirect(url_for('blog.admin_index'))
@@ -84,12 +89,22 @@ def admin_login():
 # 后台首页
 @blue.route('/admin/index/')
 def admin_index():
-    # response = is_login()
-    # if response:
-    #     return response
     username = session["username"]
+    logs = Loginlog.query.order_by(desc('logintime'))
+    loginnum = Loginlog.query.filter_by(username=username).count()
+    adminnum = Loginlog.query.group_by('username').count()
+    nowtime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    article_num = len(Blog.query.all())
 
-    return render_template('admin/index.html',username=username)
+    content = {
+        'username': username,
+        'logs': logs,
+        'loginnum': loginnum,
+        'adminnum': adminnum,
+        'nowtime': nowtime,
+        'article_num': article_num,
+    }
+    return render_template('admin/index.html',content=content)
 
 
 # 后台登出/注销
