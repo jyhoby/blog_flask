@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% for blog in blogs %}
+    <li>
+        <h3><a href="{{ url_for('blog.blog_detail', blogid=blog.id )}}">
+          {{ blog.title }}</a>
+        </h3>
+        <i><a href="{{ url_for('blog.blog_detail', blogid=blog.id )}}">
+            <img src="{{ blog.imgurl }}"></a>
+        </i>
+
+      <p>{{ blog.content }}</p>
+    </li>
+    {% endfor %}
+</body>
+</html>
